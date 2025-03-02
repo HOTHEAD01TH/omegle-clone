@@ -8,9 +8,9 @@ declare global {
 import { Socket, io } from "socket.io-client";
 // import ChatBox from "./Chat";
 
-const URL = process.env.NODE_ENV === 'production' 
-  ? '/api' 
-  : 'https://omegle-clone-5z5w.onrender.com';
+const URL = 'https://omegle-clone-5z5w.onrender.com';
+
+
 
 export const Room = ({
     name,
