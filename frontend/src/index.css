@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #130f40;
+    background-image: linear-gradient(315deg, #130f40 0%, #000000 90%);
+    /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); */
+}
+
+.heading {
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d1d1d1 74%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.sub-heading {
+    background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.video-skeleton {
+    height: 360px;
+    width: 640px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent #00ccff #00b7ff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+    
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+    
