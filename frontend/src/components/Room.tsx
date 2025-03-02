@@ -10,7 +10,7 @@ import { Socket, io } from "socket.io-client";
 
 const URL = process.env.NODE_ENV === 'production' 
   ? '/api' 
-  : 'http://localhost:3000';
+  : 'https://omegle-clone-5z5w.onrender.com';
 
 export const Room = ({
     name,

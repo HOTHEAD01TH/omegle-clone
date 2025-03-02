@@ -1,35 +1,32 @@
-import { Socket } from "socket.io";
+import express from "express";
+import { Server } from "socket.io";
 import http from "http";
-
-import express from 'express';
-import { Server } from 'socket.io';
 import { UserManager } from "./managers/UserManger";
 
 const app = express();
+const PORT = process.env.PORT || 3000; // Use Render’s port or default to 3000
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://omegle-clone-2.0.vercel.app", 
     methods: ["GET", "POST"],
   },
 });
 
 const userManager = new UserManager();
 
-io.on('connection', (socket: Socket) => {
-  console.log('a user connected');
+io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id);
   userManager.addUser("randomName", socket);
 
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    console.log("User disconnected");
     userManager.removeUser(socket.id);
-  })
+  });
 });
 
-// Keep the listen call for local development
-if (process.env.NODE_ENV !== 'production') {
-  server.listen(3000, () => {
-    console.log('Server running on port 3000');
-  });
-}
+// ✅ Fix: Listen on `process.env.PORT`
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
