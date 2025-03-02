@@ -35,7 +35,14 @@ export const Room = ({
     const [roomId, setRoomId] = useState<string | null>(null);
 
     useEffect(() => {
-        const socket = io(URL);
+        const socket = io(URL, {
+            transports: ['websocket', 'polling'],
+            withCredentials: true,
+            forceNew: true,
+            timeout: 10000,
+            reconnection: true,
+            reconnectionAttempts: 5
+        });
         socket.on('send-offer', async ({roomId}) => {
             console.log("sending offer");
             setLobby(false);
