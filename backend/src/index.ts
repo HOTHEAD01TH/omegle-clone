@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://omegle-clone-2.0.vercel.app", 
+    origin: "https://omegle-clone-v2.vercel.app", 
     methods: ["GET", "POST"],
   },
 });
